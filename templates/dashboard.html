@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: #f5f6fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .dashboard {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .user-info {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .logout-button {
+            background: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        .logout-button:hover {
+            background: #c0392b;
+        }
+        .user-details {
+            margin-top: 20px;
+        }
+        .detail-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .icon {
+            margin-right: 10px;
+            color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="user-info">
+            <div class="header">
+                <h1><i class="fas fa-user-circle icon"></i>Dashboard</h1>
+                <a href="{{ url_for('logout') }}" class="logout-button">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+            <div class="user-details">
+                <div class="detail-item">
+                    <i class="fas fa-user icon"></i>
+                    Username: {{ user_info.preferred_username }}
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-envelope icon"></i>
+                    Email: {{ user_info.email }}
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-fingerprint icon"></i>
+                    ID: {{ user_info.sub }}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
